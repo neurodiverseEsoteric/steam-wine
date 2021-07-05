@@ -16,7 +16,7 @@ export PREFIXCOMMAND TMP BASE_DIR
 export WINEPREFIX WINEARCH
 export WINE_REQ_MOD=( sandbox corefonts steam   )
 export INSTALL_PATH
-export SANDBOX_FORCE=true
+export SANDBOX_FORCE=false
 export STEAM_ARGS="-no-cef-sandbox"
 
 CONF=/etc/steam-wine.conf
@@ -89,7 +89,7 @@ esac
 {
     case "$1" in
         steam)
-            find -H "$BASE_DIR" -name "Steam.exe" > "$TMP"
+            find -H "$WINEPREFIX" -name "Steam.exe" > "$TMP"
             read -r STEAM_PATH < "$TMP"
 
             if [ ! -f "$STEAM_PATH" ]; then
